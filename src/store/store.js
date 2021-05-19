@@ -9,7 +9,8 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
     state: {
         allData: [],
-        singleRoute: {}
+        singleRoute: {},
+        imageGallery: []
     },
     getters: {
         allData(state) {
@@ -17,6 +18,9 @@ export const store = new Vuex.Store({
         },
         singleRoute(state) {
           return state.singleRoute
+        },
+        imageGallery(state) {
+          return state.imageGallery
       }  
     },
     actions: {
@@ -33,6 +37,12 @@ export const store = new Vuex.Store({
                     commit('singleData', response.data)
                     return response
             })
+        },
+        saveImage({ commit }) {
+            return axios.get('https://jsonplaceholder.typicode.com/photos')
+                .then(response => {
+                commit('saveImage',response.data)
+            })
         }
     },
     mutations: {
@@ -41,6 +51,9 @@ export const store = new Vuex.Store({
         },
         singleData(state, data) {
             state.singleRoute = data
+        },
+        saveImage(state, data) {
+            state.imageGallery = data
         }
     }
 })
