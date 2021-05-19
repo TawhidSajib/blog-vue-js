@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="bg-gray-300 grid grid-cols-5">
+    <div class="bg-gray-300 grid grid-cols-3">
       <img
         v-for="(image, index) in imageGallery"
         :key="index"
@@ -18,6 +18,9 @@ import VueAxios from "vue-axios";
 Vue.use(VueAxios, axios);
 import { mapGetters } from "vuex";
 export default {
+  data() {
+    return {};
+  },
   created() {
     this.getData();
   },
