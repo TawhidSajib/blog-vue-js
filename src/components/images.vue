@@ -1,13 +1,8 @@
 <template>
-  <div>
-    <div class="bg-gray-300 grid grid-cols-3">
-      <img
-        v-for="(image, index) in imageGallery"
-        :key="index"
-        :src="image.url"
-        alt=""
-        class="w-90 h-90"
-      />
+  <div class="grid grid-cols-3">
+    <div v-for="(image, index) in imageGallery" :key="index">
+      <img :src="image.url" alt="" class="w-90 h-90 grid grid-cols-3" />
+      <figcaption class="text-center mb-8">{{ image.title }}</figcaption>
     </div>
   </div>
 </template>
