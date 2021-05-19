@@ -26,6 +26,14 @@
       deserunt neque, id harum explicabo cum maiores officiis dicta
       voluptatibus, molestiae dolorem quod ea.
     </p>
+    <div class="text-center">
+      <button
+        class="bg-green-500 py-2 px-4 mt-2 rounded text-white hover:bg-green-700 duration-700"
+        @click="blogList"
+      >
+        All Blog list
+      </button>
+    </div>
   </div>
 </template>
 <script>
