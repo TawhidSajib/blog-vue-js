@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="container mx-auto p-6 rounded bg-gray-400 mt-4 w-3/4">
+    <div class="container mx-auto p-6 rounded mt-4 w-3/4">
       <img src="https://via.placeholder.com/150" class="h-80 w-full mb-4" />
-      <h2 class="text-2xl font-bold text-center">{{ singleRoute.title }}</h2>
-      <p class="text-center">{{ singleRoute.body }}</p>
+      <h2 class="text-2xl font-bold">{{ singleRoute.title }}</h2>
+      <p>{{ singleRoute.body }}</p>
     </div>
     <div class="text-center mt-4">
       <button
