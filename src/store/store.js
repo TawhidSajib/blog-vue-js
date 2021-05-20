@@ -11,7 +11,8 @@ export const store = new Vuex.Store({
         allData: [],
         singleRoute: {},
         imageGallery: [],
-        users: []
+        users: [],
+        singleComment: {}
     },
     getters: {
         allData(state) {
@@ -25,6 +26,9 @@ export const store = new Vuex.Store({
         },
         users(state) {
           return state.users
+        },
+        singleComment(state) {
+          return state.singleComment
       }  
     },
     actions: {
@@ -51,8 +55,14 @@ export const store = new Vuex.Store({
         usersData({commit}) {
             return axios.get('https://jsonplaceholder.typicode.com/users')
                 .then(response => {
-                    console.log(response);
                     commit('usersData', response.data)
+                    return response
+            })
+        },
+        saveComment({commit},payload) {
+            return axios.get('https://jsonplaceholder.typicode.com/comments/' + payload)
+                .then(response => {
+                    commit('saveComment', response.data)
                     return response
             })
         }
@@ -69,6 +79,9 @@ export const store = new Vuex.Store({
         },
         usersData(state, data) {
             state.users = data
+        },
+        saveComment(state, data) {
+            state.singleComment = data
         }
     }
 })
