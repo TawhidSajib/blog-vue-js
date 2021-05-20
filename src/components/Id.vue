@@ -1,5 +1,6 @@
 <template>
   <div>
+    <pre>{{ formatComment }}</pre>
     <div class="container mx-auto p-6 rounded mt-4 w-3/4">
       <img src="https://via.placeholder.com/150" class="h-80 w-full mb-4" />
       <h2 class="text-2xl font-bold">{{ singleRoute.title }}</h2>
@@ -9,8 +10,8 @@
 
         <div
           class="space-y-4 mb-4"
-          v-for="single in singleComment"
-          :key="single"
+          v-for="(single, index) in formatComment"
+          :key="index"
         >
           <div class="flex">
             <div class="flex-shrink-0 mr-3">
@@ -49,10 +50,18 @@
       </div>
       <div class="mt-8">
         <button
-          class="bg-green-400 hover:bg-green-700 duration-700 transition ease-in-out transform hover:-translate-y-1 hover:scale-110 text-white px-4 py-2 rounded"
-          @click="goToBack"
+          v-if="!showAllComment"
+          @click="showAllComment = !showAllComment"
+          class="bg-green-400 hover:bg-green-700 duration-700 transition ease-in-out hover:scale-110 text-white px-4 py-2 rounded"
         >
-          Go Back
+          Show More
+        </button>
+        <button
+          v-else
+          @click="showAllComment = !showAllComment"
+          class="bg-green-400 hover:bg-green-700 duration-700 transition ease-in-out hover:scale-110 text-white px-4 py-2 rounded"
+        >
+          Show Less
         </button>
       </div>
     </div>
@@ -66,7 +75,9 @@ Vue.use(VueAxios, axios);
 import { mapGetters } from "vuex";
 export default {
   data() {
-    return {};
+    return {
+      showAllComment: false,
+    };
   },
   created() {
     this.getData();
@@ -74,6 +85,10 @@ export default {
   },
   computed: {
     ...mapGetters(["singleRoute", "singleComment"]),
+    formatComment() {
+      if (!this.showAllComment) return this.singleComment.slice(0, 2);
+      return this.singleComment;
+    },
   },
   methods: {
     getData() {
@@ -81,9 +96,6 @@ export default {
     },
     getComment() {
       this.$store.dispatch("saveComment", "?postId=" + this.$route.params.id);
-    },
-    goToBack() {
-      this.$router.go(-1);
     },
   },
 };
