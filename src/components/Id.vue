@@ -7,7 +7,11 @@
       <div class="antialiased max-w-screen-sm">
         <h3 class="mb-4 text-lg font-semibold text-gray-900">Comments</h3>
 
-        <div class="space-y-4">
+        <div
+          class="space-y-4 mb-4"
+          v-for="single in singleComment"
+          :key="single"
+        >
           <div class="flex">
             <div class="flex-shrink-0 mr-3">
               <img
@@ -19,9 +23,11 @@
             <div
               class="flex-1 border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed"
             >
-              <strong>{{ singleComment.email }}</strong>
+              <strong>{{ single.email }}</strong>
               <span class="text-xs text-gray-400 ml-3">3:34 PM</span>
-              <p class="text-sm">{{ singleComment.body }}</p>
+              <p class="text-sm">
+                {{ single.body }}
+              </p>
               <div class="mt-4 flex items-center">
                 <div class="flex -space-x-2 mr-2">
                   <img
@@ -74,7 +80,7 @@ export default {
       this.$store.dispatch("singleData", this.$route.params.id);
     },
     getComment() {
-      this.$store.dispatch("saveComment", this.$route.params.id);
+      this.$store.dispatch("saveComment", "?postId=" + this.$route.params.id);
     },
     goToBack() {
       this.$router.go(-1);

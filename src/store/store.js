@@ -12,7 +12,7 @@ export const store = new Vuex.Store({
         singleRoute: {},
         imageGallery: [],
         users: [],
-        singleComment: {}
+        singleComment: []
     },
     getters: {
         allData(state) {
