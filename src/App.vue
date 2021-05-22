@@ -19,36 +19,44 @@
         </button>
       </div>
       <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-        <div class="text-sm lg:flex-grow">
+        <div class="navbar text-sm lg:flex-grow">
           <router-link
+            active-class="active"
+            exact
             tag="a"
             to="/"
             href="#responsive-header"
-            class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+            class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 mr-4"
           >
             Home
           </router-link>
           <router-link
+            active-class="active"
+            exact
             tag="a"
             to="/users"
             href="#responsive-header"
-            class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+            class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 mr-4"
           >
             Users
           </router-link>
           <router-link
+            active-class="active"
+            exact
             tag="a"
             to="/blog"
             href="#responsive-header"
-            class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+            class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 mr-4"
           >
             Blog List
           </router-link>
           <router-link
+            active-class="active"
+            exact
             tag="a"
             to="/gallery"
             href="#responsive-header"
-            class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white"
+            class="block mt-4 lg:inline-block lg:mt-0 text-teal-200"
           >
             Gallery
           </router-link>
@@ -67,4 +75,7 @@ export default {
 </script>
 
 <style>
+.navbar .active {
+  color: white !important;
+}
 </style>
